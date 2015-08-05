@@ -9,6 +9,7 @@ var TodoSchema = mongoose.Schema({
     description: String,
     price: Number,
     imgUrl: String,
+    completed: Boolean,
     sessionId: {
         type: String,
         required: true
