@@ -28,9 +28,7 @@ router.put('/todo/:sessionId', function (req, res) {
 });
 
 router.delete('/todo/:sessionId', function (req, res) {
-    Todo.findOneAndRemove({
-        _id: req.body._id
-    }, function (err) {
+    Todo.findByIdAndRemove(req.body._id, function (err) {
         if (err)
             error.databaseError(req, res, err);
 
