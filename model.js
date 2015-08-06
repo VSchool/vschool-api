@@ -14,8 +14,25 @@ var TodoSchema = mongoose.Schema({
         type: String,
         required: true
     }
+});
+
+var PonySchema = mongoose.Schema({
+    //ponyName //imgUrl //userName
+    ponyName: {
+        type: String,
+        required: true
+    },
+    imgUrl: {
+        type: String,
+        required: true
+    },
+    userName: {
+        type: String,
+        required: true
+    }
 })
 
 module.exports = {
-    Todo: mongoose.model('todo', TodoSchema)
+    Todo: mongoose.model('todo', TodoSchema),
+    Pony: mongoose.model('pony', PonySchema)
 };
