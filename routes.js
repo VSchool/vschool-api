@@ -87,7 +87,6 @@ router.delete('/pony/:sessionId', function (req, res) {
 });
 
 router.post('/pony/:sessionId', function (req, res) {
-    req.body.sessionId = req.params.sessionId;
     var model = new Pony(req.body);
     model.sessionId = req.params.sessionId;
     model.save(function (err, obj) {

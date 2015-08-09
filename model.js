@@ -29,6 +29,10 @@ var PonySchema = mongoose.Schema({
     userName: {
         type: String,
         required: true
+    },
+    sessionId: {
+        type: String,
+        required: true
     }
 })
 
