@@ -70,8 +70,9 @@ module.exports = function (Model, populatePath) {
         var model = new Model(req.body);
 
         model.save(function (err, obj) {
-            if (err)
+            if (err) {
                 error.databaseError(req, res, err);
+            }
 
             res.send(obj);
         });

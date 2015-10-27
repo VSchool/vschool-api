@@ -34,7 +34,7 @@ var PonySchema = mongoose.Schema({
         type: String,
         required: true
     }
-})
+});
 
 module.exports = {
     Todo: mongoose.model('todo', TodoSchema),
