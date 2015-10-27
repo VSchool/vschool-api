@@ -32,11 +32,11 @@ app.use(function (req, res, next) {
 
 app.use('/', routes);
 
-app.use(function (req, res, next) {
-    var err = new Error('Not Found');
-    err.status = 404;
-    res.send('<h1>Page Not Found</h1><p>' + err + '</p>');
-});
+//app.use(function (req, res, next) {
+//    var err = new Error('Not Found');
+//    err.status = 404;
+//    res.send('<h1>Page Not Found</h1><p>' + err + '</p>');
+//});
 
 var port = process.env.PORT || 9191;
 app.listen(port, function () {
