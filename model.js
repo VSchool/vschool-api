@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var objId = mongoose.Schema.Types.ObjectId;
+//var objId = mongoose.Schema.Types.ObjectId;
 
 var TodoSchema = mongoose.Schema({
     title: {
@@ -17,7 +17,6 @@ var TodoSchema = mongoose.Schema({
 });
 
 var PonySchema = mongoose.Schema({
-    //ponyName //imgUrl //userName
     ponyName: {
         type: String,
         required: true
