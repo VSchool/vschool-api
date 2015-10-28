@@ -14,7 +14,8 @@ todoRouter.get('/:sessionId', function (req, res) {
 });
 
 todoRouter.get('/:sessionId/:todoId', function (req, res) {
-    Todo.findOne({sessionId: req.params.sessionId, _id: req.params.todoId}, function (err, objs) {
+    Todo.findOne(
+        {sessionId: req.params.sessionId, _id: req.params.todoId}, function (err, objs) {
         if (err)
             error.databaseError(req, res);
 
@@ -23,11 +24,8 @@ todoRouter.get('/:sessionId/:todoId', function (req, res) {
 });
 
 todoRouter.put('/:sessionId/:todoId', function (req, res) {
-    //console.log(req.body);
-    //console.log(req.body._id);
-
     Todo.findOneAndUpdate(
-        {_id: req.params.todoId},
+        {sessionId: req.params.sessionId ,_id: req.params.todoId},
         req.body,
         {
             upsert: true,
@@ -41,7 +39,7 @@ todoRouter.put('/:sessionId/:todoId', function (req, res) {
 });
 
 todoRouter.delete('/:sessionId/:todoId', function (req, res) {
-    Todo.remove({_id: req.params.todoId}, function (err) {
+    Todo.remove({sessionId: req.params.sessionId, _id: req.params.todoId}, function (err) {
         if (err)
             error.databaseError(req, res, err);
 
