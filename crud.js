@@ -5,7 +5,7 @@ module.exports = function (Model, populatePath) {
     this.get = function (req, res) {
 
         if (populatePath) {
-            Model.find({}).populate(populatePath).exec(function(err, obj) {
+            Model.find({}).populate(populatePath).exec(function (err, obj) {
                 if (err)
                     error.databaseError(req, res, err);
 
@@ -27,7 +27,7 @@ module.exports = function (Model, populatePath) {
         var query = {
             _id: req.params.id
         };
-        
+
         if (populatePath) {
             Model.find(query).populate(populatePath).exec(function (err, obj) {
                 if (err)
@@ -46,23 +46,23 @@ module.exports = function (Model, populatePath) {
 
 
     };
-    
-    this.delete = function(req, res) {
-        Model.findOneAndRemove({_id: req.params.id}, function(err) {
+
+    this.delete = function (req, res) {
+        Model.findOneAndRemove({_id: req.params.id}, function (err) {
             if (err)
                 error.databaseError(req, res, err);
-            
+
             res.send({msg: "Object successfully deleted"});
         });
     };
 
     this.put = function (req, res) {
 
-        Model.findOneAndUpdate({_id: req.params.id}, req.body, {upsert: true, new: true}, function(err, obj) {
-            
+        Model.findOneAndUpdate({_id: req.params.id}, req.body, {upsert: true, new: true}, function (err, obj) {
+
             if (err)
                 error.databaseError(req, res, err);
-           res.send(obj); 
+            res.send(obj);
         });
     };
 
