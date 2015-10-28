@@ -19,8 +19,6 @@ module.exports = function (Model, populatePath) {
                 res.send(objs);
             });
         }
-
-
     };
 
     this.getOne = function (req, res) {
@@ -43,17 +41,6 @@ module.exports = function (Model, populatePath) {
                 res.send(obj);
             });
         }
-
-
-    };
-
-    this.delete = function (req, res) {
-        Model.findOneAndRemove({_id: req.params.id}, function (err) {
-            if (err)
-                error.databaseError(req, res, err);
-
-            res.send({msg: "Object successfully deleted"});
-        });
     };
 
     this.put = function (req, res) {
@@ -90,6 +77,4 @@ module.exports = function (Model, populatePath) {
             });
         });
     };
-
-
 };
