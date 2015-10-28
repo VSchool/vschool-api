@@ -1,5 +1,6 @@
 var ponyRouter = require('express').Router();
 var Pony = require('../model').Pony;
+var error = require('../error');
 
 ponyRouter.get('/:sessionId', function (req, res) {
     Pony.find({
@@ -12,29 +13,29 @@ ponyRouter.get('/:sessionId', function (req, res) {
     });
 });
 
-ponyRouter.put('/:sessionId', function (req, res) {
-    Pony.findOneAndUpdate({
-        _id: req.body._id
-    }, req.body, {
-        upsert: true,
-        new: true
-    }, function (err, obj) {
+ponyRouter.put('/:sessionId/:ponyId', function (req, res) {
+    Pony.findOneAndUpdate({sessionId: req.params.sessionId, _id: req.params.ponyId},
+        req.body,
+        {
+            upsert: true,
+            new: true
+        }, function (err, obj) {
 
-        if (err)
-            error.databaseError(req, res, err);
-        res.send(obj);
-    });
+            if (err)
+                error.databaseError(req, res, err);
+            res.send(obj);
+        });
 });
 
-ponyRouter.delete('/:sessionId', function (req, res) {
-    Pony.remove({_id: req.body._id}, function (err) {
-        if (err)
-            error.databaseError(req, res, err);
+ponyRouter.delete('/:sessionId/:ponyId', function (req, res) {
+    Pony.remove({sessionId: req.params.sessionId, _id: req.params.ponyId}, function (err) {
+            if (err)
+                error.databaseError(req, res, err);
 
-        res.send({
-            msg: "Successfully deleted record"
+            res.send({
+                msg: "Successfully deleted record"
+            });
         });
-    });
 });
 
 ponyRouter.post('/:sessionId', function (req, res) {
