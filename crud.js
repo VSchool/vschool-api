@@ -6,15 +6,17 @@ module.exports = function (Model, populatePath) {
 
         if (populatePath) {
             Model.find({}).populate(populatePath).exec(function (err, obj) {
-                if (err)
+                if (err) {
                     error.databaseError(req, res, err);
+                }
 
                 res.send(obj);
             });
         } else {
             Model.find({}, function (err, objs) {
-                if (err)
+                if (err) {
                     error.databaseError(req, res);
+                }
 
                 res.send(objs);
             });
@@ -28,15 +30,17 @@ module.exports = function (Model, populatePath) {
 
         if (populatePath) {
             Model.find(query).populate(populatePath).exec(function (err, obj) {
-                if (err)
+                if (err) {
                     error.databaseError(req, res, err);
+                }
 
                 res.send(obj);
             });
         } else {
             Model.find(query, function (err, obj) {
-                if (err)
+                if (err) {
                     error.databaseError(req, res, err);
+                }
 
                 res.send(obj);
             });
@@ -47,8 +51,9 @@ module.exports = function (Model, populatePath) {
 
         Model.findOneAndUpdate({_id: req.params.id}, req.body, {upsert: true, new: true}, function (err, obj) {
 
-            if (err)
+            if (err) {
                 error.databaseError(req, res, err);
+            }
             res.send(obj);
         });
     };
