@@ -69,8 +69,9 @@ module.exports = function (Model, populatePath) {
         Model.findOneAndRemove({
             _id: req.params.id
         }, function (err) {
-            if (err)
+            if (err) {
                 error.databaseError(req, res, err);
+            }
 
             res.send({
                 msg: "Successfully deleted record"
