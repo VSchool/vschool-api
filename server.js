@@ -24,10 +24,10 @@ app.use(function (req, res, next) {
     next();
 });
 
-app.use('/todo', require('./routes/todoRoutes'));
-app.use('/pony', require('./routes/ponyRoutes'));
+app.use('/:sessionId/todo', require('./routes/todoRoutes'));
+app.use('/:sessionId/pony', require('./routes/ponyRoutes'));
 
-app.use(function (req, res, next) {
+app.use(function (req, res) {
     var err = new Error('Not Found');
     err.status = 404;
     res.send('<h1>Page Not Found</h1><p>' + err + '</p>');
