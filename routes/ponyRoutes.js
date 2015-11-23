@@ -41,8 +41,9 @@ ponyRouter.put('/:ponyId', function (req, res) {
             if (err)
                 error.databaseError(req, res, err);
 
-        res.send({
-            msg: "Successfully deleted record"
+            res.send({
+                msg: "Successfully deleted record"
+            });
         });
     });
 
