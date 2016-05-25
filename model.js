@@ -9,7 +9,10 @@ var TodoSchema = mongoose.Schema({
     description: String,
     price: Number,
     imgUrl: String,
-    completed: Boolean,
+    completed: {
+        type: Boolean,
+        default: false
+    },
     sessionId: {
         type: String,
         required: true
