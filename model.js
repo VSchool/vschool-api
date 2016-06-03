@@ -20,7 +20,7 @@ var TodoSchema = mongoose.Schema({
 });
 
 var PonySchema = mongoose.Schema({
-    ponyName: {
+    name: {
         type: String,
         required: true
     },
@@ -28,7 +28,7 @@ var PonySchema = mongoose.Schema({
         type: String,
         required: true
     },
-    userName: {
+    username: {
         type: String,
         required: true
     },
