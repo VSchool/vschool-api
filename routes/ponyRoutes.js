@@ -6,20 +6,22 @@ ponyRouter.get('/', function (req, res) {
         Pony.find({
             sessionId: req.params.sessionId
         }, function (err, objs) {
-            if (err)
+            if (err) {
                 error.databaseError(req, res);
-
-            res.send(objs);
+            } else {
+                res.send(objs);
+            }
         });
     })
     .post('/', function (req, res) {
         var model = new Pony(req.body);
         model.sessionId = req.params.sessionId;
         model.save(function (err, obj) {
-            if (err)
+            if (err) {
                 error.databaseError(req, res, err);
-
-            res.send(obj);
+            } else {
+                res.send(obj);
+            }
         });
     });
 
@@ -31,19 +33,24 @@ ponyRouter.put('/:ponyId', function (req, res) {
                 new: true
             }, function (err, obj) {
 
-                if (err)
+                if (err) {
                     error.databaseError(req, res, err);
-                res.send(obj);
+                } else {
+                    res.send(obj);
+                }
             });
     })
     .delete('/:ponyId', function (req, res) {
+        //req.params.ponyId = undefined;
+        //res.send(typeof req.params.ponyId);
         Pony.remove({sessionId: req.params.sessionId, _id: req.params.ponyId}, function (err) {
-            if (err)
+            if (err) {
                 error.databaseError(req, res, err);
-
-            res.send({
-                msg: "Successfully deleted record"
-            });
+            } else {
+                res.send({
+                    msg: "Successfully deleted record"
+                });
+            }
         });
     });
 
