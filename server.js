@@ -2,11 +2,12 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var database = mongoose.connect('mongodb://localhost/api');
-
+var morgan = require("morgan");
 var cors = require('cors');
 
 var app = express();
 
+app.use(morgan("dev"));
 app.use(cors());
 
 app.use(bodyParser.json());
