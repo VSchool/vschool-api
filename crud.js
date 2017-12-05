@@ -1,9 +1,7 @@
-var error = require('./error');
+const error = require('./error');
 
 module.exports = function (Model, populatePath) {
-
     this.get = function (req, res) {
-
         if (populatePath) {
             Model.find({}).populate(populatePath).exec(function (err, obj) {
                 if (err) {
@@ -24,7 +22,7 @@ module.exports = function (Model, populatePath) {
     };
 
     this.getOne = function (req, res) {
-        var query = {
+        const query = {
             _id: req.params.id
         };
 
@@ -59,7 +57,7 @@ module.exports = function (Model, populatePath) {
     };
 
     this.post = function (req, res) {
-        var model = new Model(req.body);
+        const model = new Model(req.body);
 
         model.save(function (err, obj) {
             if (err) {

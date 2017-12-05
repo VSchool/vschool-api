@@ -1,7 +1,6 @@
-var mongoose = require('mongoose');
-//var objId = mongoose.Schema.Types.ObjectId;
+const mongoose = require('mongoose');
 
-var TodoSchema = mongoose.Schema({
+const TodoSchema = mongoose.Schema({
     title: {
         type: String,
         required: true
@@ -19,7 +18,7 @@ var TodoSchema = mongoose.Schema({
     }
 });
 
-var PonySchema = mongoose.Schema({
+const PonySchema = mongoose.Schema({
     name: {
         type: String,
         required: true

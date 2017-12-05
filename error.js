@@ -5,12 +5,12 @@ function Error(msg, error, statusCode) {
 }
 
 function databaseError (req, res, err) {
-    var error = new Error("Error", err, 400);
+    const error = new Error("Error", err, 400);
     res.status(400).send(error);
 }
 
 function noRecord (req, res, dataType) {
-    var error = new Error("Could not find: " + dataType, null, 404);
+    const error = new Error("Could not find: " + dataType, null, 404);
     res.status(404).send(error);
 }
 
