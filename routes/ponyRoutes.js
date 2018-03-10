@@ -1,8 +1,8 @@
-var ponyRouter = require('express').Router({mergeParams: true});
-var Pony = require('../model').Pony;
-var error = require('../error');
+var ponyRouter = require("express").Router({mergeParams: true});
+var Pony = require("../model").Pony;
+var error = require("../error");
 
-ponyRouter.get('/', function (req, res) {
+ponyRouter.get("/", function (req, res) {
         Pony.find({
             sessionId: req.params.sessionId
         }, function (err, objs) {
@@ -13,7 +13,7 @@ ponyRouter.get('/', function (req, res) {
             }
         });
     })
-    .post('/', function (req, res) {
+    .post("/", function (req, res) {
         var model = new Pony(req.body);
         model.sessionId = req.params.sessionId;
         model.save(function (err, obj) {
@@ -25,7 +25,7 @@ ponyRouter.get('/', function (req, res) {
         });
     });
 
-ponyRouter.put('/:ponyId', function (req, res) {
+ponyRouter.put("/:ponyId", function (req, res) {
         Pony.findOneAndUpdate({sessionId: req.params.sessionId, _id: req.params.ponyId},
             req.body,
             {
@@ -40,7 +40,7 @@ ponyRouter.put('/:ponyId', function (req, res) {
                 }
             });
     })
-    .delete('/:ponyId', function (req, res) {
+    .delete("/:ponyId", function (req, res) {
         //req.params.ponyId = undefined;
         //res.send(typeof req.params.ponyId);
         Pony.remove({sessionId: req.params.sessionId, _id: req.params.ponyId}, function (err) {

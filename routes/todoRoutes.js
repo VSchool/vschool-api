@@ -8,7 +8,7 @@ todoRouter.get("/", (req, res) => {
         if (err) return error.databaseError(req, res);
         return res.send(objs);
     });
-})
+});
 todoRouter.post("/", (req, res) => {
     const model = new Todo(req.body);
     model.sessionId = req.params.sessionId;
@@ -36,7 +36,7 @@ todoRouter.put("/:todoId", (req, res) => {
             return res.send(obj);
         }
     );
-})
+});
 todoRouter.delete("/:todoId", (req, res) => {
     Todo.remove({sessionId: req.params.sessionId, _id: req.params.todoId}, (err) => {
         if (err) return error.databaseError(req, res, err);
