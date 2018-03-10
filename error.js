@@ -15,6 +15,6 @@ function noRecord (req, res, dataType) {
 }
 
 module.exports = {
-    databaseError: databaseError,
-    noRecord: noRecord
+    databaseError,
+    noRecord
 };
