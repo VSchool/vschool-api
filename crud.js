@@ -1,4 +1,4 @@
-const error = require('./error');
+const error = require("./error");
 
 module.exports = function (Model, populatePath) {
     this.get = function (req, res) {
