@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-const TodoSchema = mongoose.Schema({
+const todoSchema = new Schema({
     title: {
         type: String,
         required: true
@@ -18,7 +19,7 @@ const TodoSchema = mongoose.Schema({
     }
 });
 
-const PonySchema = mongoose.Schema({
+const ponySchema = new Schema({
     name: {
         type: String,
         required: true
@@ -38,6 +39,6 @@ const PonySchema = mongoose.Schema({
 });
 
 module.exports = {
-    Todo: mongoose.model("todo", TodoSchema),
-    Pony: mongoose.model("pony", PonySchema)
+    Todo: mongoose.model("todo", todoSchema),
+    Pony: mongoose.model("pony", ponySchema)
 };
