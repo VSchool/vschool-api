@@ -4,8 +4,16 @@ const mongoose = require("mongoose");
 const morgan = require("morgan");
 const cors = require("cors");
 const path = require("path")
+const rateLimit = require("express-rate-limit");
 const port = process.env.PORT || 9191;
 
+const limiter = rateLimit({
+  windowMs: 1 * 60 * 1000, // 1 minute
+  max: 100, // limit each IP to 100 requests per windowMs
+  message: "Too many requests in a short amount of time. Please don't hammer our API like this :P"
+});
+
+app.use(limiter);
 app.use(morgan("dev"));
 app.use(cors());
 app.use(express.json());
