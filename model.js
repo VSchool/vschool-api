@@ -20,7 +20,7 @@ const todoSchema = new Schema({
 });
 
 const ponySchema = new Schema({
-    name: {
+    title: {
         type: String,
         required: true
     },
@@ -28,7 +28,7 @@ const ponySchema = new Schema({
         type: String,
         required: true
     },
-    username: {
+    description: {
         type: String,
         required: true
     },
@@ -40,5 +40,5 @@ const ponySchema = new Schema({
 
 module.exports = {
     Todo: mongoose.model("todo", todoSchema),
-    Pony: mongoose.model("pony", ponySchema)
+    Thing: mongoose.model("thing", ponySchema)
 };
