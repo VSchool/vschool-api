@@ -19,14 +19,13 @@ app.use(morgan("dev"))
 app.use(cors())
 app.use(express.json())
 
-mongoose.connect(
-    "mongodb://localhost:27017/api",
-    { useNewUrlParser: true },
-    (err) => {
-        if (err) throw err
-        console.log("Connected to MongoDB database")
-    }
-)
+async function connect() {
+    await mongoose.connect(
+        "mongodb://localhost:27017/api"
+    )
+}
+
+connect().catch(err => console.error(err))
 
 app.use("/:sessionId/todo", require("./routes/todoRoutes"))
 app.use("/:sessionId/thing", require("./routes/thingRoutes"))
